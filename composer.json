@@ -1,11 +1,19 @@
 {
     "name": "arseniy/algo",
     "require-dev": {
-        "symfony/var-dumper": "^5.4"
+        "symfony/var-dumper": "^5.4",
+        "codeception/codeception": "^5.0",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
     },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -13,6 +21,5 @@
             "name": "Apcenuu",
             "email": "q4nko.apcenuu@gmail.com"
         }
-    ],
-    "require": {}
+    ]
 }

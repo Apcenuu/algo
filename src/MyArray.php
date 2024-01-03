@@ -35,7 +35,44 @@ final class MyArray
                 $greater[] = $a[$i];
             }
         }
-        return array_merge($this->qSort($less), [$pivot], $this->qSort($greater));
+        $result = array_merge($this->qSort($less), [$pivot], $this->qSort($greater));
+        return $result;
+    }
+
+    public function selectionSort(array $a): array
+    {
+        $count = count($a);
+        for ($i = 0; $i < $count; $i++) {
+            $min = $a[$i];
+            $minIndex = $i;
+            for ($j = $i+1; $j < $count; $j++) {
+                if ($min > $a[$j]) {
+                    $min = $a[$j];
+                    $minIndex = $j;
+                }
+            }
+            if ($minIndex != $i) {
+                $temp = $a[$i];
+                $a[$i] = $a[$minIndex];
+                $a[$minIndex] = $temp;
+            }
+        }
+        return $a;
+    }
+
+    public function bubbleSort(array $a): array
+    {
+        $count = count($a);
+        for ($i = 0; $i < $count; $i++) {
+            for ($j = $i + 1; $j < $count - 1; $j++) {
+                if ($a[$i] > $a[$j]) {
+                    $temp = $a[$j];
+                    $a[$j] = $a[$i];
+                    $a[$i] = $temp;
+                }
+            }
+        }
+        return $a;
     }
 
     public function push(int $element): void
@@ -92,7 +129,7 @@ final class MyArray
 
     public function at(int $index): int
     {
-        if ($index > 0) {
+        if ($index >= 0) {
             return $this->a[$index];
         }
         return $this->a[count($this->a) + $index];
@@ -126,6 +163,25 @@ final class MyArray
             $k++;
         }
         return $res;
+    }
+
+    public function moveZeroes(): void
+    {
+        $count = count($this->a);
+        $i = 0;
+        while ($i < $count && $this->a[$i] != 0) {
+            $i++;
+        }
+        $j = $i;
+        for (; $i < $count; $i++) {
+            if ($this->a[$i] != 0) {
+                $this->a[$j] = $this->a[$i];
+                $j++;
+            }
+        }
+        for (; $j < $count; $j++) {
+            $this->a[$j] = 0;
+        }
     }
 
     public function __toString(): string
