@@ -81,15 +81,15 @@ final class Calculator
         }
 
         $multiplier = [];
-        $itog = $result[count($result) - 1];
+        $total = $result[count($result) - 1];
         for ($i = count($result) - 1; $i > 0; $i--) {
             $multiplier[] = 0;
-            $item1 = $itog;
+            $item1 = $total;
             $item2 = array_merge($result[$i - 1], $multiplier);
-            $itog = $this->summ($item1, $item2);
+            $total = $this->summ($item1, $item2);
         }
 
-        return $itog;
+        return $total;
     }
 
     private function normalize(array $a, int $maxCount): array
