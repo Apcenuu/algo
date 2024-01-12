@@ -21,12 +21,12 @@ final class Calculator
             } else {
                 $flag = 0;
             }
-            $res[] = $summ;
+            array_unshift($res, $summ);
         }
         if ($flag) {
-            $res = array_merge($res, [1]);
+            $res = array_merge([1], $res);
         }
-        return array_reverse($res);
+        return $res;
     }
 
     public function subtraction(array $a1, array $a2): array
@@ -45,10 +45,10 @@ final class Calculator
             } else {
                 $flag = 0;
             }
-            $res[] = $diff;
+            array_unshift($res, $diff);
         }
 
-        return array_reverse($res);
+        return $res;
     }
 
     public function multiplication(array $a1, array $a2): array
@@ -74,10 +74,10 @@ final class Calculator
 
         $result = [];
         for ($i = count($res) - 1; $i >= 0; $i--) {
+            $result[$i] = [];
             for ($j = count($res[$i]) - 1; $j >= 0; $j--) {
-                $result[$i][] = $res[$i][$j];
+                array_unshift($result[$i], $res[$i][$j]);
             }
-            $result[$i] = array_reverse($result[$i]);
         }
 
         $multiplier = [];
