@@ -21,5 +21,8 @@
             "name": "Apcenuu",
             "email": "q4nko.apcenuu@gmail.com"
         }
-    ]
+    ],
+    "scripts": {
+        "test-full": "@php vendor/bin/codecept run"
+    }
 }
