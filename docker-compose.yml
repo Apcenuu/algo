@@ -6,6 +6,7 @@ services:
       target: app
     volumes:
       - ./:/app
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     extra_hosts:
       - "host.docker.internal:host-gateway"
   nginx:
@@ -16,4 +17,4 @@ services:
       PHP_FASTCGI_ADDR: php
       PHP_FASTCGI_PORT: 9000
     ports:
-      - "20000:8080"
+      - "20100:8080"
