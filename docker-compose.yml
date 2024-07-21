@@ -17,4 +17,4 @@ services:
       PHP_FASTCGI_ADDR: php
       PHP_FASTCGI_PORT: 9000
     ports:
-      - "20100:8080"
+      - "20001:8080"
